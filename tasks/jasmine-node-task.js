@@ -49,7 +49,7 @@ module.exports = function (grunt) {
         var onComplete = function (runner, log) {
             var exitCode;
             util.print('\n');
-            if (global.jasmineResult.fail === 0) {
+            if (!global.jasmineResult.fail) {
                 exitCode = 0;
             } else {
                 exitCode = 1;
@@ -58,7 +58,6 @@ module.exports = function (grunt) {
                     process.exit(exitCode);
                 }
             }
-            jasmine.getGlobal().jasmine.currentEnv_ = undefined;
             done(exitCode === 0);
         };
 
